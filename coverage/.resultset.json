@@ -218,7 +218,7 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           null,
@@ -231,8 +231,8 @@
         "lines": [
           1,
           1,
-          2,
-          2,
+          7,
+          7,
           null,
           null
         ]
@@ -250,7 +250,7 @@
         "lines": [
           1,
           1,
-          0,
+          1,
           null,
           null
         ]
@@ -265,23 +265,22 @@
           null
         ]
       },
-      "/Users/max/craftAcademy/scratch_api/spec/models/game_spec.rb": {
+      "/Users/max/craftAcademy/scratch_api/spec/requests/api/index_spec.rb": {
         "lines": [
           1,
+          2,
+          null,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
+          9,
+          null,
+          1,
           2,
           null,
           null,
-          1,
-          1,
-          1,
+          2,
           null,
+          1,
+          1,
           null,
           null,
           null
@@ -299,8 +298,22 @@
           1,
           null
         ]
+      },
+      "/Users/max/craftAcademy/scratch_api/app/controllers/api/games_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/max/craftAcademy/scratch_api/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1638375303
+    "timestamp": 1638375931
   }
 }
