@@ -12,6 +12,7 @@ test:
   <<: *default
   database: scratch_api_test
   username: scratch_api
+  password: ""
 
 production:
   <<: *default
