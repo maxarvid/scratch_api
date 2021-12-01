@@ -27,5 +27,17 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Create DB
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: scratch_api
+        run: |
+          bin/rails db:setup
+
       - name: Run tests
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: scratch_api
         run: bundle exec rspec
