@@ -7,6 +7,7 @@ on:
 jobs:
   test_pull_request:
     runs-on: ubuntu-latest
+
     services:
       postgres: 
         image: postgres:11
@@ -16,11 +17,15 @@ jobs:
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
+     steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
       - name: Setup test database
         env:
           RAILS_ENV: test
@@ -28,5 +33,6 @@ jobs:
           PGUSER: myapp
         run: |
           bin/rails db:setup
-      -name: Run tests
-        run: bun/rspec
+
+      - name: Run tests
+        run: bin/rspec
