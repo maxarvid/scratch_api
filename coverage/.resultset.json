@@ -1,6 +1,19 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/max/craftAcademy/scratch_api/spec/spec_helper.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "/Users/max/craftAcademy/scratch_api/config/environment.rb": {
         "lines": [
           null,
@@ -252,6 +265,15 @@
           null
         ]
       },
+      "/Users/max/craftAcademy/scratch_api/spec/models/game_spec.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
       "/Users/max/craftAcademy/scratch_api/app/models/game.rb": {
         "lines": [
           1,
@@ -266,6 +288,6 @@
         ]
       }
     },
-    "timestamp": 1638368702
+    "timestamp": 1638371775
   }
 }
