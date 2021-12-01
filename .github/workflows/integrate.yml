@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres: 
+      postgres:
         image: postgres:11
         env:
           POSTGRES_USER: myapp
@@ -17,7 +17,7 @@ jobs:
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
 
-     steps:
+    steps:
       - name: checkout code
         uses: actions/checkout@v2
 
