@@ -1,3 +1,4 @@
+---
 name: Rails Continuous Integration
 
 on:
@@ -14,6 +15,7 @@ jobs:
           POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
+
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
