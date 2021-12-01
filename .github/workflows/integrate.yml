@@ -1,0 +1,35 @@
+name: Rails Continuous Integration
+
+on:
+  pull_request:
+    branches: [development]
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:11
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_USER: myapp
+          POSTGRES_DB: myapp_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true
+      - name: Setup test database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: myapp
+        run: |
+          bin/rails db:setup
+      -name: Run tests
+        run: bun/rspec
