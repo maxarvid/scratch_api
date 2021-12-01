@@ -7,22 +7,17 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     services:
-      db:
+      postgres: 
         image: postgres:11
-        ports: ["5432:5432"]
         env:
           POSTGRES_USER: myapp
           POSTGRES_DB: myapp_test
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          POSTGRES_PASSWORD: ""
+        ports: ["5432:5432"]
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.2
           bundler-cache: true
       - name: Setup test database
         env:
