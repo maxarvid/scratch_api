@@ -6,13 +6,9 @@ default: &default
 development:
   <<: *default
   database: scratch_api_development
-  username: scratch_api
-  #password:
 test:
   <<: *default
   database: scratch_api_test
-  username: scratch_api
-  password: ""
 
 production:
   <<: *default
