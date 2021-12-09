@@ -24,4 +24,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include ResponseJSON
+  config.before do 
+    WebMock.stub_request(:any, %r{https://www.mainelottery.com/players_info/unclaimed_prizes.html})
+      .to_return(status: 200, body: file_fixture('lottery_response.html'))
+  end
 end
