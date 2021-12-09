@@ -11,10 +11,12 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'httplog'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 group :development do
