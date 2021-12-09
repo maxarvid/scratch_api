@@ -1,3 +1,4 @@
+require 'webmock/rspec'
 require 'simplecov'
 SimpleCov.start
 
@@ -25,7 +26,7 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include ResponseJSON
   config.before do 
-    WebMock.stub_request(:any, %r{https://www.mainelottery.com/players_info/unclaimed_prizes.html})
+    WebMock.stub_request(:any, %r{https://www.mainelottery.com})
       .to_return(status: 200, body: file_fixture('lottery_response.html'))
   end
 end
