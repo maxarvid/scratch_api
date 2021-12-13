@@ -10,7 +10,7 @@ module ScraperService
     rows[1..].each do |row|
       row_children = row.children
       game_hash = {}
-      game_hash[':price'] = row_children[0].text
+      game_hash['price'] = row_children[0].text
       game_hash['game_number'] = row_children[1].text
       game_hash['title'] = row_children[2].text
       game_hash['percent_unsold'] = row_children[3].text
@@ -25,13 +25,13 @@ module ScraperService
   def self.save_games_to_db(games_array)
     games_array.each do |game|
         Game.create(
-          price: game['price'], 
+          price: game['price'][1..].to_f, 
           game_number: game['game_number'],
           title: game['title'],
           percent_unsold: game['percent_unsold'],
           total_unclaimed: game['total_unclaimed'],
-          top_prize: game['top_prize'],
-          top_prizes_unclaimed: game['top_prizes_unclaimed'],
+          top_prize: game['top_prize'][1..].to_i,
+          top_prizes_unclaimed: game['top_prizes_unclaimed'].to_i,
         )
     end
     Game.all
