@@ -29,7 +29,7 @@ module ScraperService
           game_number: game['game_number'],
           title: game['title'],
           percent_unsold: game['percent_unsold'],
-          total_unclaimed: game['total_unclaimed'],
+          total_unclaimed: game['total_unclaimed'].gsub(/[\$,]/ ,"").to_f,
           top_prize: game['top_prize'][1..].to_i,
           top_prizes_unclaimed: game['top_prizes_unclaimed'].to_i,
         )
