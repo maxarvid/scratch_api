@@ -10,13 +10,13 @@ module ScraperService
     rows[1..].each do |row|
       row_children = row.children
       game_hash = {}
-      game_hash['price'] = row_children[0].text
-      game_hash['game_number'] = row_children[1].text
+      game_hash['price'] = format_string_from_html(row_children[0].text)
+      game_hash['game_number'] = format_string_from_html(row_children[1].text)
       game_hash['title'] = row_children[2].text
       game_hash['percent_unsold'] = row_children[3].text
-      game_hash['total_unclaimed'] = row_children[4].text
-      game_hash['top_prize'] = row_children[5].text
-      game_hash['top_prizes_unclaimed'] = row_children[6].text
+      game_hash['total_unclaimed'] = format_string_from_html(row_children[4].text)
+      game_hash['top_prize'] = format_string_from_html(row_children[5].text)
+      game_hash['top_prizes_unclaimed'] = format_string_from_html(row_children[6].text)
       games_array << game_hash
     end
     games_array
@@ -25,15 +25,19 @@ module ScraperService
   def self.save_games_to_db(games_array)
     games_array.each do |game|
         Game.create(
-          price: game['price'][1..].to_f, 
+          price: game['price'], 
           game_number: game['game_number'],
           title: game['title'],
           percent_unsold: game['percent_unsold'],
-          total_unclaimed: game['total_unclaimed'].gsub(/[\$,]/ ,"").to_f,
-          top_prize: game['top_prize'][1..].to_i,
-          top_prizes_unclaimed: game['top_prizes_unclaimed'].to_i,
+          total_unclaimed: game['total_unclaimed'],
+          top_prize: game['top_prize'],
+          top_prizes_unclaimed: game['top_prizes_unclaimed'],
         )
     end
     Game.all
+  end
+
+  private_class_method def self.format_string_from_html(input)
+    input.gsub(/[\$\s+,]/, '')
   end
 end
